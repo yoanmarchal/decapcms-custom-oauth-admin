@@ -1,0 +1,39 @@
+publish_mode: editorial_workflow
+backend:
+  name: github
+  branch: main
+  repo: yoanmarchal/decapcms-custom-oauth-front # change this to your repo
+  base_url: https://midnight-admitted-floss.glitch.me # change this to your OAuth server
+
+# used together with `npx netlify-cms-proxy-server`. https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
+local_backend: true
+
+media_folder: public/img
+public_folder: /img
+
+# Docs: https://www.netlifycms.org/docs/configuration-options/#collections
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/articles'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    identifier_field: slug
+    preview_path: articles/{{slug}}
+    editor:
+      preview: true
+    fields:
+      - { label: 'Created Date', name: 'createdAt', widget: 'datetime', format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - {
+          label: 'Gallery',
+          name: 'gallery',
+          widget: 'list',
+          required: false,
+          summary: '{{fields.image}}',
+          field: { label: 'Image', name: 'image', widget: 'image' },
+        }
