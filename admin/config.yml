@@ -4,9 +4,10 @@ backend:
   branch: main
   repo: yoanmarchal/decapcms-custom-oauth-front # change this to your repo
   base_url: https://midnight-admitted-floss.glitch.me # change this to your OAuth server
+  site_domain: https://dcpfront.yoanmarchal.com
 
 # used together with `npx netlify-cms-proxy-server`. https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
-local_backend: true
+local_backend: false
 
 media_folder: public/img
 public_folder: /img
